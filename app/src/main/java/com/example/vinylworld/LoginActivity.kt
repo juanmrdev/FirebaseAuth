@@ -11,6 +11,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.util.regex.Pattern
 
 class LoginActivity : AppCompatActivity() {
 
@@ -42,7 +43,7 @@ class LoginActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        // Texto olvidaste la contrase単a? = ForgotPassword
+        // Texto olvidaste la contrasena? = ForgotPassword
         binding.olvidastecontra.setOnClickListener {
             val intent = Intent(this, ForgotPassword::class.java)
             startActivity(intent)
@@ -94,12 +95,12 @@ class LoginActivity : AppCompatActivity() {
         //validate data
         if (pass.isEmpty()) {
             Toast.makeText(this, "Por favor ingrese una contrasena", Toast.LENGTH_SHORT).show()
-        }/* else if (!Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}\$")
+        }else if (!Pattern.compile("^(?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}\$")
                 .matcher(pass).matches()
         ) {
             Toast.makeText(this, "Por favor ingrese una contrasena valida", Toast.LENGTH_SHORT)
                 .show()
-        }*/ else {
+        }else {
             return true
         }
         return false
